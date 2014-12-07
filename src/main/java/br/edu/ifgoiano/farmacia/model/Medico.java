@@ -1,23 +1,24 @@
 package br.edu.ifgoiano.farmacia.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
 
+import javax.persistence.*;
+
+import java.util.List;
 
 /**
  * The persistent class for the medicos database table.
  * 
  */
 @Entity
-@Table(name="medicos")
-@NamedQuery(name="Medico.findAll", query="SELECT m FROM Medico m")
+@Table(name = "medicos")
+@NamedQuery(name = "Medico.findAll", query = "SELECT m FROM Medico m")
 public class Medico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="pk_medicos")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "pk_medicos")
 	private Integer pkMedicos;
 
 	private String crm;
@@ -26,11 +27,17 @@ public class Medico implements Serializable {
 
 	private String telefone;
 
-	//bi-directional many-to-one association to SaidasMedicamento
-	@OneToMany(mappedBy="medico")
+	// bi-directional many-to-one association to SaidasMedicamento
+	@OneToMany(mappedBy = "medico")
 	private List<SaidasMedicamento> saidasMedicamentos;
 
-	public Medico() {
+	Medico() {
+	}
+
+	public Medico(String crm, String nome, String telefone) {
+		this.crm = crm;
+		this.nome = nome;
+		this.telefone = telefone;
 	}
 
 	public Integer getPkMedicos() {
@@ -73,14 +80,16 @@ public class Medico implements Serializable {
 		this.saidasMedicamentos = saidasMedicamentos;
 	}
 
-	public SaidasMedicamento addSaidasMedicamento(SaidasMedicamento saidasMedicamento) {
+	public SaidasMedicamento addSaidasMedicamento(
+			SaidasMedicamento saidasMedicamento) {
 		getSaidasMedicamentos().add(saidasMedicamento);
 		saidasMedicamento.setMedico(this);
 
 		return saidasMedicamento;
 	}
 
-	public SaidasMedicamento removeSaidasMedicamento(SaidasMedicamento saidasMedicamento) {
+	public SaidasMedicamento removeSaidasMedicamento(
+			SaidasMedicamento saidasMedicamento) {
 		getSaidasMedicamentos().remove(saidasMedicamento);
 		saidasMedicamento.setMedico(null);
 

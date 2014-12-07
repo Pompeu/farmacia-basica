@@ -1,45 +1,49 @@
 package br.edu.ifgoiano.farmacia.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
 
+import javax.persistence.*;
+
+import java.util.List;
 
 /**
  * The persistent class for the cidades database table.
  * 
  */
 @Entity
-@Table(name="cidades")
-@NamedQuery(name="Cidade.findAll", query="SELECT c FROM Cidade c")
+@Table(name = "cidades")
+@NamedQuery(name = "Cidade.findAll", query = "SELECT c FROM Cidade c")
 public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="pk_cidade")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_cidade")
+	@SequenceGenerator(name = "pk_cidade", allocationSize = 1, sequenceName = "sq_pk_cidade")
+	@Column(name = "pk_cidade")
 	private Integer pkCidade;
 
 	private String nome;
 
-	//bi-directional many-to-one association to Estado
-	@ManyToOne
-	@JoinColumn(name="pk_estado")
+	// bi-directional many-to-one association to Estado
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pk_estado")
 	private Estado estado;
 
-	//bi-directional many-to-one association to Paciente
-	@OneToMany(mappedBy="cidade")
+	@OneToMany(mappedBy = "cidade")
 	private List<Paciente> pacientes;
 
-	//bi-directional many-to-one association to Psf
-	@OneToMany(mappedBy="cidade")
-	private List<Psf> psfs;
+	Cidade() {
 
-	public Cidade() {
+	}
+
+	public Cidade(String nome, Estado estado) {
+		this.nome = nome;
+		this.estado = estado;
+
 	}
 
 	public Integer getPkCidade() {
-		return this.pkCidade;
+		return pkCidade;
 	}
 
 	public void setPkCidade(Integer pkCidade) {
@@ -47,7 +51,7 @@ public class Cidade implements Serializable {
 	}
 
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
@@ -55,7 +59,7 @@ public class Cidade implements Serializable {
 	}
 
 	public Estado getEstado() {
-		return this.estado;
+		return estado;
 	}
 
 	public void setEstado(Estado estado) {
@@ -63,47 +67,43 @@ public class Cidade implements Serializable {
 	}
 
 	public List<Paciente> getPacientes() {
-		return this.pacientes;
+		return pacientes;
 	}
 
 	public void setPacientes(List<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
 
-	public Paciente addPaciente(Paciente paciente) {
-		getPacientes().add(paciente);
-		paciente.setCidade(this);
-
-		return paciente;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((pkCidade == null) ? 0 : pkCidade.hashCode());
+		return result;
 	}
 
-	public Paciente removePaciente(Paciente paciente) {
-		getPacientes().remove(paciente);
-		paciente.setCidade(null);
-
-		return paciente;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cidade other = (Cidade) obj;
+		if (pkCidade == null) {
+			if (other.pkCidade != null)
+				return false;
+		} else if (!pkCidade.equals(other.pkCidade))
+			return false;
+		return true;
 	}
 
-	public List<Psf> getPsfs() {
-		return this.psfs;
-	}
-
-	public void setPsfs(List<Psf> psfs) {
-		this.psfs = psfs;
-	}
-
-	public Psf addPsf(Psf psf) {
-		getPsfs().add(psf);
-		psf.setCidade(this);
-
-		return psf;
-	}
-
-	public Psf removePsf(Psf psf) {
-		getPsfs().remove(psf);
-		psf.setCidade(null);
-
-		return psf;
+	@Override
+	public String toString() {
+		return "Cidade [pkCidade=" + pkCidade + ", nome=" + nome + ", estado="
+				+ estado;
 	}
 
 }

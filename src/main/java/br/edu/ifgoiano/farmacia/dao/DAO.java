@@ -3,6 +3,8 @@ package br.edu.ifgoiano.farmacia.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
@@ -12,6 +14,7 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author pompeu
  * @param <T>
  */
+@RequestScoped
 public class DAO<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -20,10 +23,15 @@ public class DAO<T> implements Serializable {
 
 	private final EntityManager em;
 
+	@Inject
 	public DAO(Class<T> classe, EntityManager em) {
 		this.classe = classe;
 		this.em = em;
 
+	}
+
+	public DAO() {
+		this(null, null);
 	}
 
 	public void create(T obj) {

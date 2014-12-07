@@ -1,221 +1,124 @@
 package br.edu.ifgoiano.farmacia.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the pacientes database table.
  * 
  */
 @Entity
-@Table(name="pacientes")
-@NamedQuery(name="Paciente.findAll", query="SELECT p FROM Paciente p")
+@Table(name = "pacientes")
+@NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p")
 public class Paciente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="pk_paciente")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_paciente")
+	@SequenceGenerator(name = "pk_paciente", allocationSize = 1, sequenceName = "sq_pk_paciente")
+	@Column(name = "pk_paciente")
 	private Integer pkPaciente;
-
-	private String bairro;
-
-	private String cep;
 
 	private String cpf;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_nascimento")
+	@Column(name = "data_nascimento")
 	private Date dataNascimento;
-
-	private String diabetico;
-
-	private Boolean gestante;
-
-	private String hipertenso;
-
-	private String logradouro;
 
 	private String nome;
 
-	@Column(name="nome_mae")
+	@Column(name = "nome_mae")
 	private String nomeMae;
-
-	@Column(name="nome_pai")
-	private String nomePai;
-
-	private String numero;
-
-	private String sexo;
-
-	//bi-directional many-to-one association to Cidade
-	@ManyToOne
-	@JoinColumn(name="pk_cidade")
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pk_cidade")
 	private Cidade cidade;
 
-	//bi-directional many-to-one association to Psf
-	@ManyToOne
-	@JoinColumn(name="pk_psf")
-	private Psf psf;
+	Paciente() {
 
-	//bi-directional many-to-one association to SaidasMedicamento
-	@OneToMany(mappedBy="paciente")
-	private List<SaidasMedicamento> saidasMedicamentos;
-
-	public Paciente() {
 	}
 
-	public Integer getPkPaciente() {
-		return this.pkPaciente;
-	}
-
-	public void setPkPaciente(Integer pkPaciente) {
-		this.pkPaciente = pkPaciente;
-	}
-
-	public String getBairro() {
-		return this.bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getCep() {
-		return this.cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
-	public String getCpf() {
-		return this.cpf;
-	}
-
-	public void setCpf(String cpf) {
+	public Paciente(String cpf, Date dataNascimento, String nome,
+			String nomeMae, Cidade cidade) {
 		this.cpf = cpf;
-	}
-
-	public Date getDataNascimento() {
-		return this.dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public String getDiabetico() {
-		return this.diabetico;
-	}
-
-	public void setDiabetico(String diabetico) {
-		this.diabetico = diabetico;
-	}
-
-	public Boolean getGestante() {
-		return this.gestante;
-	}
-
-	public void setGestante(Boolean gestante) {
-		this.gestante = gestante;
-	}
-
-	public String getHipertenso() {
-		return this.hipertenso;
-	}
-
-	public void setHipertenso(String hipertenso) {
-		this.hipertenso = hipertenso;
-	}
-
-	public String getLogradouro() {
-		return this.logradouro;
-	}
-
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-
-	public String getNome() {
-		return this.nome;
-	}
-
-	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getNomeMae() {
-		return this.nomeMae;
-	}
-
-	public void setNomeMae(String nomeMae) {
 		this.nomeMae = nomeMae;
-	}
-
-	public String getNomePai() {
-		return this.nomePai;
-	}
-
-	public void setNomePai(String nomePai) {
-		this.nomePai = nomePai;
-	}
-
-	public String getNumero() {
-		return this.numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public String getSexo() {
-		return this.sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
-	public Cidade getCidade() {
-		return this.cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
 
-	public Psf getPsf() {
-		return this.psf;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setPsf(Psf psf) {
-		this.psf = psf;
+	public Integer getPkPaciente() {
+		return pkPaciente;
 	}
 
-	public List<SaidasMedicamento> getSaidasMedicamentos() {
-		return this.saidasMedicamentos;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setSaidasMedicamentos(List<SaidasMedicamento> saidasMedicamentos) {
-		this.saidasMedicamentos = saidasMedicamentos;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public SaidasMedicamento addSaidasMedicamento(SaidasMedicamento saidasMedicamento) {
-		getSaidasMedicamentos().add(saidasMedicamento);
-		saidasMedicamento.setPaciente(this);
-
-		return saidasMedicamento;
+	public String getNome() {
+		return nome;
 	}
 
-	public SaidasMedicamento removeSaidasMedicamento(SaidasMedicamento saidasMedicamento) {
-		getSaidasMedicamentos().remove(saidasMedicamento);
-		saidasMedicamento.setPaciente(null);
-
-		return saidasMedicamento;
+	public String getNomeMae() {
+		return nomeMae;
 	}
 
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	@Override
+	public String toString() {
+		return "Paciente [pkPaciente=" + pkPaciente + ", cpf=" + cpf
+				+ ", dataNascimento=" + dataNascimento + ", nome=" + nome
+				+ ", nomeMae=" + nomeMae + ", cidade=" + cidade + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((pkPaciente == null) ? 0 : pkPaciente.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paciente other = (Paciente) obj;
+		if (pkPaciente == null) {
+			if (other.pkPaciente != null)
+				return false;
+		} else if (!pkPaciente.equals(other.pkPaciente))
+			return false;
+		return true;
+	}
 }
