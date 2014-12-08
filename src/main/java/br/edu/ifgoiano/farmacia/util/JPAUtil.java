@@ -13,17 +13,15 @@ public class JPAUtil {
 
 	private static final EntityManagerFactory EMF = Persistence
 			.createEntityManagerFactory("farmacia-basica");
-	private static final EntityManager EM = EMF.createEntityManager();
 
 	@Produces
 	@RequestScoped
 	public static EntityManager criaEntityManager() {
 
-		return EM;
+		return EMF.createEntityManager();
 	}
 
-	public void close(@Disposes EntityManager EM) {
-		if (EM.isOpen())
-			EM.close();
+	public void close(@Disposes EntityManager entityManager) {
+		entityManager.close();
 	}
 }

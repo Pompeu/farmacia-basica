@@ -36,14 +36,14 @@ public class Paciente implements Serializable {
 	private String cpf;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "data_nascimento")
+	@Column(name = "data_nascimento",nullable=false)
 	private Date dataNascimento;
 
 	private String nome;
 
 	@Column(name = "nome_mae")
 	private String nomeMae;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pk_cidade")
 	private Cidade cidade;
@@ -87,6 +87,10 @@ public class Paciente implements Serializable {
 
 	public Cidade getCidade() {
 		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 	@Override

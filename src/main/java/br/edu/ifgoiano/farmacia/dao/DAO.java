@@ -3,35 +3,31 @@ package br.edu.ifgoiano.farmacia.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
+
+import br.edu.ifgoiano.farmacia.util.JPAUtil;
 
 /**
  *
  * @author pompeu
  * @param <T>
  */
-@RequestScoped
-public class DAO<T> implements Serializable {
+public class DAO<T> {
 
-	private static final long serialVersionUID = 1L;
+	private final Class<T> clazz;
 
-	private final Class<T> classe;
+	private EntityManager em;
 
-	private final EntityManager em;
-
-	@Inject
-	public DAO(Class<T> classe, EntityManager em) {
-		this.classe = classe;
-		this.em = em;
-
+	public DAO(Class<T> clazz) {
+		this.clazz = clazz;
+		em = JPAUtil.criaEntityManager();
 	}
 
+	@Deprecated
 	public DAO() {
-		this(null, null);
+		this(null);
 	}
 
 	public void create(T obj) {
@@ -43,7 +39,7 @@ public class DAO<T> implements Serializable {
 
 	public void delete(T obj) {
 		em.getTransaction().begin();
-		obj = em.find(classe, RefletionObjeto.getIdObjeto(obj));
+		obj = em.find(clazz, RefletionObjeto.getIdObjeto(obj));
 		em.remove(obj);
 		em.getTransaction().commit();
 		em.close();
@@ -58,21 +54,21 @@ public class DAO<T> implements Serializable {
 	}
 
 	public List<T> retrivetAll() {
-		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
-		query.from(classe);
+		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(clazz);
+		query.from(clazz);
 		return em.createQuery(query).getResultList();
 	}
 
 	public T retrivetbyId(Integer id) {
-		return em.find(classe, id);
+		return em.find(clazz, id);
 	}
 
 	public List<T> retriveByName(String name) {
 
-		String consulta = "select c from " + classe.getName()
+		String consulta = "select c from " + clazz.getName()
 				+ " c where c.nome like :pNome";
 
-		TypedQuery<T> query = em.createQuery(consulta, this.classe);
+		TypedQuery<T> query = em.createQuery(consulta, this.clazz);
 
 		query.setParameter("pNome", "%" + name + "%");
 
@@ -81,11 +77,11 @@ public class DAO<T> implements Serializable {
 
 	public T retriveByCNPJOrCPF(String numero) {
 
-		String consulta = "select c from " + classe.getName() + " c where c."
+		String consulta = "select c from " + clazz.getName() + " c where c."
 				+ EcpfCnpj.CPFCNPJ.cpfOrCpnj(numero.length())
 				+ " like :pCpfCnpj";
 
-		TypedQuery<T> query = em.createQuery(consulta, this.classe);
+		TypedQuery<T> query = em.createQuery(consulta, this.clazz);
 
 		query.setParameter("pCpfCnpj", "%" + numero + "%");
 

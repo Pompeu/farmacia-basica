@@ -73,7 +73,7 @@ public class Cidade implements Serializable {
 	public void setPacientes(List<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

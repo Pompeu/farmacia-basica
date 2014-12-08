@@ -17,7 +17,8 @@ public class Medico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_medicos")
+	@SequenceGenerator(name = "pk_medicos", sequenceName = "sq_pk_medicos", allocationSize = 1)
 	@Column(name = "pk_medicos")
 	private Integer pkMedicos;
 
@@ -41,7 +42,7 @@ public class Medico implements Serializable {
 	}
 
 	public Integer getPkMedicos() {
-		return this.pkMedicos;
+		return pkMedicos;
 	}
 
 	public void setPkMedicos(Integer pkMedicos) {
@@ -49,7 +50,7 @@ public class Medico implements Serializable {
 	}
 
 	public String getCrm() {
-		return this.crm;
+		return crm;
 	}
 
 	public void setCrm(String crm) {
@@ -57,7 +58,7 @@ public class Medico implements Serializable {
 	}
 
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
@@ -65,7 +66,7 @@ public class Medico implements Serializable {
 	}
 
 	public String getTelefone() {
-		return this.telefone;
+		return telefone;
 	}
 
 	public void setTelefone(String telefone) {
@@ -73,27 +74,43 @@ public class Medico implements Serializable {
 	}
 
 	public List<SaidasMedicamento> getSaidasMedicamentos() {
-		return this.saidasMedicamentos;
+		return saidasMedicamentos;
 	}
 
 	public void setSaidasMedicamentos(List<SaidasMedicamento> saidasMedicamentos) {
 		this.saidasMedicamentos = saidasMedicamentos;
 	}
 
-	public SaidasMedicamento addSaidasMedicamento(
-			SaidasMedicamento saidasMedicamento) {
-		getSaidasMedicamentos().add(saidasMedicamento);
-		saidasMedicamento.setMedico(this);
-
-		return saidasMedicamento;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((pkMedicos == null) ? 0 : pkMedicos.hashCode());
+		return result;
 	}
 
-	public SaidasMedicamento removeSaidasMedicamento(
-			SaidasMedicamento saidasMedicamento) {
-		getSaidasMedicamentos().remove(saidasMedicamento);
-		saidasMedicamento.setMedico(null);
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medico other = (Medico) obj;
+		if (pkMedicos == null) {
+			if (other.pkMedicos != null)
+				return false;
+		} else if (!pkMedicos.equals(other.pkMedicos))
+			return false;
+		return true;
+	}
 
-		return saidasMedicamento;
+	@Override
+	public String toString() {
+		return "Medico [pkMedicos=" + pkMedicos + ", crm=" + crm + ", nome="
+				+ nome + ", telefone=" + telefone;
 	}
 
 }
