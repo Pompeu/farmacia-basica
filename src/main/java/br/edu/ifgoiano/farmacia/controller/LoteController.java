@@ -5,64 +5,58 @@ import java.util.List;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.validator.Validator;
-import br.edu.ifgoiano.farmacia.dao.LoteDAO;
-import br.edu.ifgoiano.farmacia.model.EntradasMedicamento;
-import br.edu.ifgoiano.farmacia.model.Grupo;
+import br.edu.ifgoiano.farmacia.dao.DAO;
 import br.edu.ifgoiano.farmacia.model.Lote;
-import br.edu.ifgoiano.farmacia.model.Medicamento;
 
 @Controller
 public class LoteController {
 
 	private Result result;
-	private LoteDAO loteDAO;
-	private Validator validator;
+	private DAO<Lote> dao;
+	private Lote lote;
 
-	private Medicamento medicamento;
-	private Grupo grupo;
-	private EntradasMedicamento entradas;
+	@Inject
+	public LoteController(Result result) {
+		this.result = result;
+		this.dao = new DAO<Lote>(Lote.class);
+	}
 
 	@Deprecated
 	public LoteController() {
-		this(null, null, null);
+		this(null);
 	}
 
-	public LoteController(Result result, LoteDAO loteDAO, Validator validator) {
-		this.result = result;
-		this.loteDAO = loteDAO;
-		this.validator = validator;
+	public void form() {
 
 	}
 
-	public void formulario() {
+	public void create(Lote lote) {
+		System.out.println(lote.toString());
+		System.out.println(lote.getMedicamento().toString());
+		System.out.println(lote.getMedicamento().getGrupo().toString());
+		if (lote.getPkLote() == null)
+			dao.create(lote);
+		else
+			dao.update(lote);
+		result.redirectTo(this).listar();
 	}
 
-	public void salvar(Lote lote) {
-		loteDAO.salvar(lote);
+	public void editar(Integer pkKey) {
+		lote = dao.retrivetbyId(pkKey);
+		result.include(lote);
+		result.redirectTo(this).form();
 	}
 
-	public void editar(Lote lote) {
+	public void deletar(Integer pkKey) {
+		lote = dao.retrivetbyId(pkKey);
+		dao.delete(lote);
+		result.redirectTo(this).listar();
 
-		medicamento = loteDAO.recuperarMedicamentoById(lote.getMedicamento()
-				.getPkMedicamento());
-
-		grupo = loteDAO.recuperarGrupoById(medicamento.getGrupo().getPkGrupo());
-
-		medicamento.setGrupo(grupo);
-
-		entradas = loteDAO.entradaById(lote.getEntradasMedicamento()
-				.getPkEntrada());
-
-		lote = loteDAO.recuperarById(lote.getPkLote());
-
-		this.loteDAO.salvar(lote);
 	}
 
-	public List<Lote> listarTodosLotes() {
-		return loteDAO.recupearTodos();
+	public List<Lote> listar() {
+		result.include(lote);
+		return dao.retrivetAll();
 	}
-
 }

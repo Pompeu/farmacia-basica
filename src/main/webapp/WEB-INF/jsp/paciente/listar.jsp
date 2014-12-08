@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,7 +29,7 @@
 					
 					<td>${paciente.nome}</td>
 					<td>${paciente.cpf}</td>
-					<td>${paciente.dataNascimento}</td>
+					<td> <fmt:formatDate value="${paciente.dataNascimento.time}" pattern="dd/MM/yyyy"/></td>
 					<td>${paciente.nomeMae}</td>	
 					<td>${paciente.cidade.nome}</td>
 					<td>${paciente.cidade.estado.uf}</td>

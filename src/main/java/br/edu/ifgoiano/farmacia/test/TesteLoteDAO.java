@@ -49,16 +49,14 @@ public class TesteLoteDAO {
 				.recuperarMedicamentoById(8);
 		Grupo recuperarGrupoById = loteDAO.recuperarGrupoById(7);
 		recuperarMedicamentoById.setGrupo(recuperarGrupoById);
-
 		String numeroNf = "112233";
-		lote = new Lote(Date.from(Instant.now()),
-				new Date(Calendar.getInstance().getTimeInMillis()
-						- (120 * 24 * 60 * 60 * 1000)), new Date(Calendar
-						.getInstance().getTimeInMillis()
-						+ (120 * 24 * 60 * 60 * 1000)), "0213516519949",
-				"AZLV25XKL", numeroNf, 400, Unidade.UN,
-				recuperarMedicamentoById,
-				EntradasMedicamento.newEntradasMedicamentos(numeroNf));
+		EntradasMedicamento entradasMedicamento = new EntradasMedicamento(numeroNf);
+		
+		
+		lote = new Lote(Calendar.getInstance(), Calendar.getInstance(),
+				Calendar.getInstance(), "0213516519949", "AZLV25XKL", numeroNf,
+				400, Unidade.UN, recuperarMedicamentoById,
+				entradasMedicamento);
 		/*
 		 * lote = new Lote(Date.from(Instant.now()), new
 		 * Date(Calendar.getInstance().getTimeInMillis() - (120*24*60*60*1000)),
@@ -94,8 +92,9 @@ public class TesteLoteDAO {
 
 		Integer qtdMedicamento = recuperarById.getQtdMedicamento();
 		int medicamentosEntregues = 5;
-		
-		recuperarById.setQtdMedicamento(qtdMedicamento - Math.abs(medicamentosEntregues));
+
+		recuperarById.setQtdMedicamento(qtdMedicamento
+				- Math.abs(medicamentosEntregues));
 		loteDAO.salvar(recuperarById);
 
 		assertTrue(qtdMedicamento == recuperarById.getQtdMedicamento()

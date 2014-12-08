@@ -18,7 +18,6 @@ public class PacienteController {
 	private DAO<Paciente> dao;
 	private Paciente paciente;
 
-
 	@Inject
 	public PacienteController(Result result) {
 		this.result = result;
@@ -35,13 +34,15 @@ public class PacienteController {
 	}
 
 	public void create(Paciente paciente) {
-		dao.create(paciente);
+		if (paciente.getPkPaciente() == null)
+			dao.create(paciente);
+		else
+			dao.update(paciente);
 		result.redirectTo(this).listar();
 	}
 
 	public void editar(Integer pkKey) {
 		paciente = dao.retrivetbyId(pkKey);
-		dao.update(paciente);
 		result.include(paciente);
 		result.redirectTo(this).form();
 	}

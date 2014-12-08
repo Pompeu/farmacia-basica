@@ -2,7 +2,7 @@ package br.edu.ifgoiano.farmacia.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,7 +34,7 @@ public class EntradasMedicamento implements Serializable {
 	private Integer pkEntrada;
 
 	@Temporal(TemporalType.DATE)
-	private Date dataEntrada;
+	private Calendar dataEntrada;
 
 	private String numeroNF;
 	@OneToMany
@@ -44,9 +44,9 @@ public class EntradasMedicamento implements Serializable {
 
 	}
 
-	private EntradasMedicamento(String numeroNF) {
+	public EntradasMedicamento(String numeroNF) {
 		this.numeroNF = numeroNF;
-		this.dataEntrada = Calendar.getInstance().getTime();
+		this.dataEntrada = Calendar.getInstance();
 	}
 
 	/**
@@ -54,15 +54,15 @@ public class EntradasMedicamento implements Serializable {
 	 * 
 	 * @return this
 	 */
-	public static EntradasMedicamento newEntradasMedicamentos(String numeroNF) {
+	/*public static EntradasMedicamento newEntradasMedicamentos(String numeroNF) {
 		return new EntradasMedicamento(numeroNF);
-	}
+	}*/
 
 	public Integer getPkEntrada() {
 		return pkEntrada;
 	}
 
-	public Date getDataEntrada() {
+	public Calendar getDataEntrada() {
 		return dataEntrada;
 	}
 

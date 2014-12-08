@@ -1,7 +1,7 @@
 package br.edu.ifgoiano.farmacia.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,13 +36,13 @@ public class Lote implements Serializable {
 	private Integer pkLote;
 
 	@Temporal(TemporalType.DATE)
-	private Date dataEntrada;
+	private Calendar dataEntrada;
 
-	@Temporal(TemporalType.DATE)
-	private Date dataFabricacao;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar dataFabricacao;
 
-	@Temporal(TemporalType.DATE)
-	private Date dataVencimento;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar dataVencimento;
 
 	private String codBarras;
 
@@ -58,19 +58,18 @@ public class Lote implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pk_medicamento", referencedColumnName = "pk_medicamento")
 	private Medicamento medicamento;
-	
-	@ManyToOne(cascade =CascadeType.ALL)
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pk_entrada", referencedColumnName = "pk_entrada")
 	private EntradasMedicamento entradasMedicamento;
-	
-	
+
 	Lote() {
 	}
 
-	public Lote(Date dataEntrada, Date dataFabricacao, Date dataVencimento,
-			String codBarras, String nomeLote, String numeroNf,
-			Integer qtdMedicamento, Unidade unidade, Medicamento medicamento,
-			EntradasMedicamento entradasMedicamento) {
+	public Lote(Calendar dataEntrada, Calendar dataFabricacao,
+			Calendar dataVencimento, String codBarras, String nomeLote,
+			String numeroNf, Integer qtdMedicamento, Unidade unidade,
+			Medicamento medicamento, EntradasMedicamento entradasMedicamento) {
 
 		this.dataEntrada = dataEntrada;
 		this.dataFabricacao = dataFabricacao;
@@ -93,15 +92,15 @@ public class Lote implements Serializable {
 		this.pkLote = pkLote;
 	}
 
-	public Date getDataEntrada() {
+	public Calendar getDataEntrada() {
 		return dataEntrada;
 	}
 
-	public Date getDataFabricacao() {
+	public Calendar getDataFabricacao() {
 		return dataFabricacao;
 	}
 
-	public Date getDataVencimento() {
+	public Calendar getDataVencimento() {
 		return dataVencimento;
 	}
 
@@ -128,10 +127,11 @@ public class Lote implements Serializable {
 	public Medicamento getMedicamento() {
 		return medicamento;
 	}
+
 	public void setQtdMedicamento(Integer qtdMedicamento) {
 		this.qtdMedicamento = qtdMedicamento;
 	}
-	
+
 	public EntradasMedicamento getEntradasMedicamento() {
 		return entradasMedicamento;
 	}
@@ -188,7 +188,5 @@ public class Lote implements Serializable {
 				+ qtdMedicamento + ", unidade=" + unidade + ", medicamento="
 				+ medicamento + "]";
 	}
-
-	
 
 }

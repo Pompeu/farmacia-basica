@@ -22,9 +22,9 @@
 		<label>Nome</label>
 		<input type="text" value="${paciente.nome}" name="paciente.nome">
 		<label>CPF</label>
-		<input type="text"<fmt:formatDate value="${paciente.cpf}"  type="date" pattern="dd/MM/yyyy"/> name="paciente.cpf">
-		<label>Data Nascimento</label>>
-		<input type="text" value="${paciente.dataNascimento}" name="paciente.dataNascimento">
+		<input type="text" value="${paciente.cpf}"  name="paciente.cpf">
+		<label>Data Nascimento</label>
+		<input type="date" <fmt:formatDate type="date" value="${paciente.dataNascimento.time}"/> name="paciente.dataNascimento.time">
 		<label>Nome Mãe</label>
 		<input type="text" value="${paciente.nomeMae}" name="paciente.nomeMae">
 		<label>Cidade</label>

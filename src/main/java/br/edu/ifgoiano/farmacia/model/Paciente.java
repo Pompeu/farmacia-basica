@@ -1,7 +1,7 @@
 package br.edu.ifgoiano.farmacia.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,9 +35,9 @@ public class Paciente implements Serializable {
 
 	private String cpf;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "data_nascimento",nullable=false)
-	private Date dataNascimento;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_nascimento", nullable = false)
+	private Calendar dataNascimento;
 
 	private String nome;
 
@@ -52,7 +52,7 @@ public class Paciente implements Serializable {
 
 	}
 
-	public Paciente(String cpf, Date dataNascimento, String nome,
+	public Paciente(String cpf, Calendar dataNascimento, String nome,
 			String nomeMae, Cidade cidade) {
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
@@ -73,7 +73,7 @@ public class Paciente implements Serializable {
 		return cpf;
 	}
 
-	public Date getDataNascimento() {
+	public Calendar getDataNascimento() {
 		return dataNascimento;
 	}
 
