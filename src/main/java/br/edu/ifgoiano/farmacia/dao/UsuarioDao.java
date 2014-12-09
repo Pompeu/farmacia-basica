@@ -10,8 +10,6 @@ public class UsuarioDao {
 	
 private final EntityManager em;
 
-//	private final EntityManager em = JPAUtil.criaEntityManager();
-
 	@Inject
 	public UsuarioDao(EntityManager em) {
 		this.em = em;

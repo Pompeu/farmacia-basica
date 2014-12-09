@@ -2,6 +2,7 @@ package br.edu.ifgoiano.farmacia.dao;
 
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -10,7 +11,7 @@ import br.edu.ifgoiano.farmacia.model.EntradasMedicamento;
 import br.edu.ifgoiano.farmacia.model.Grupo;
 import br.edu.ifgoiano.farmacia.model.Lote;
 import br.edu.ifgoiano.farmacia.model.Medicamento;
-
+@RequestScoped
 public class LoteImpl implements LoteDAO {
 	private final EntityManager manager;
 

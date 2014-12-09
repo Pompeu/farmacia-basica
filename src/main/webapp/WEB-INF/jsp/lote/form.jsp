@@ -17,10 +17,11 @@
 <div style="width: 900px; height:600px">	
 	<form class="form " action="create" role="form" method="post">
 	<div style="float: left;width:320; margin: 50px">
-		<legend>Cadastro de Lote</legend>
+		<legend>Entrada de Medicamento</legend>
 		 <div class="form-group">
 		 	 	<label for="codigo">Nome Lote</label>
-				<input required="required" pattern="[0-9]+$" class="form-control" type="text" id="lote" value="${lote.nomeLote}" name="lote.nomeLote">			
+		 	 	<input type="hidden" id="lote" value="${lote.pkLote}" name="lote.pkLote">
+				<input required="required" pattern="[0-9a-zA-Z]+$" class="form-control" type="text" id="lote" value="${lote.nomeLote}" name="lote.nomeLote">			
 		</div>	
 		<div class="form-group">
 			<label for="codigo">Codigo Barras</label>
@@ -35,16 +36,21 @@
 			<input class="form-control" type="number" id="quant value="${lote.qtdMedicamento}" name="lote.qtdMedicamento">
 		</div>
 		<div class="form-group">
+			<label for="un">Unidade Medida</label>	
+			<input class="form-control" type="text" id="un" value="${lote.unidade}" name="lote.unidade">
+		</div>
+		<div class="form-group">
 			<label for="entrdada">Data Entrada</label>
-			<input class="form-control" type="date" id="entrdada" value="${lote.dataEntrada }" name="lote.dataEntrada">
+			
+			<input class="form-control" type="text" id="entrdada" value="<fmt:formatDate value="${lote.dataEntrada" pattern="dd/MM/yyyy"/> " name="lote.dataEntrada">
 		</div>
 		<div class="form-group">
 			<label for="fab">Data Frabricação</label>
-			<input class="form-control" type="date" id="fab" value="${lote.dataFabricacao }" name="lote.dataFabricacao">
+			<input class="form-control" type="text" id="fab" value="<fmt:formatDate  value="${lote.dataFabricacao}" pattern="dd/MM/yyyy" /> name="lote.dataFabricacao">
 		</div>
 		<div class="form-group">
 			<label for="venc">Data Vencimento</label>
-			<input class="form-control" type="date" id="venc" value="${lote.dataVencimento }" name="lote.dataVencimento">
+			<input class="form-control" type="text" id="venc" value="<fmt:formatDate value="${lote.dataVencimento}" pattern="dd/MM/yyyy"/>" name="lote.dataVencimento">
 		</div>
 	</div>
 	<div style="float: left;width:320; margin: 50px">

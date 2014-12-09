@@ -84,6 +84,7 @@ public class Lote implements Serializable {
 
 	}
 
+
 	public Integer getPkLote() {
 		return pkLote;
 	}
@@ -96,40 +97,72 @@ public class Lote implements Serializable {
 		return dataEntrada;
 	}
 
+	public void setDataEntrada(Calendar dataEntrada) {
+		this.dataEntrada = dataEntrada;
+	}
+
 	public Calendar getDataFabricacao() {
 		return dataFabricacao;
+	}
+
+	public void setDataFabricacao(Calendar dataFabricacao) {
+		this.dataFabricacao = dataFabricacao;
 	}
 
 	public Calendar getDataVencimento() {
 		return dataVencimento;
 	}
 
+	public void setDataVencimento(Calendar dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
+
 	public String getCodBarras() {
 		return codBarras;
+	}
+
+	public void setCodBarras(String codBarras) {
+		this.codBarras = codBarras;
 	}
 
 	public String getNomeLote() {
 		return nomeLote;
 	}
 
+	public void setNomeLote(String nomeLote) {
+		this.nomeLote = nomeLote;
+	}
+
 	public String getNumeroNf() {
 		return numeroNf;
+	}
+
+	public void setNumeroNf(String numeroNf) {
+		this.numeroNf = numeroNf;
 	}
 
 	public Integer getQtdMedicamento() {
 		return qtdMedicamento;
 	}
 
+	public void setQtdMedicamento(Integer qtdMedicamento) {
+		this.qtdMedicamento = qtdMedicamento;
+	}
+
 	public Unidade getUnidade() {
 		return unidade;
+	}
+
+	public void setUnidade(Unidade unidade) {
+		this.unidade = unidade;
 	}
 
 	public Medicamento getMedicamento() {
 		return medicamento;
 	}
 
-	public void setQtdMedicamento(Integer qtdMedicamento) {
-		this.qtdMedicamento = qtdMedicamento;
+	public void setMedicamento(Medicamento medicamento) {
+		this.medicamento = medicamento;
 	}
 
 	public EntradasMedicamento getEntradasMedicamento() {

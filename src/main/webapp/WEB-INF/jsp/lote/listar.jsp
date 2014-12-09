@@ -9,18 +9,36 @@
 <title>Lista de Lotes</title>
 </head>
 <body>
-	
-	<!--
-		String descricaoGrupo, String nomeGrupo, String nomeSubGrupo
-		this.dataEntrada = dataEntrada;
-		this.dataFabricacao = dataFabricacao;
-		this.dataVencimento = dataVencimento;
-		this.codBarras = codBarras;
-		this.nomeLote = nomeLote;
-		this.numeroNf = numeroNf;
-		this.qtdMedicamento = qtdMedicamento;
-		this.unidade = unidade;
-		this.medicamento = medicamento;
-		this.entradasMedicamento = entradasMedicamento;  -->
+	<table class="table table-hover">
+		<thead>
+			<td><strong>Codigo do Lote</strong></td>
+			<td><strong>Quandidate</strong></td>
+			<td><strong>Nome do Medicamento</strong></td>
+
+			<td><strong>Editar</strong></td>
+			<td><strong>Excluir</strong></td>
+		</thead>
+		<tbody>
+			<c:forEach items="${loteList}" var="lote">
+				<tr>
+					<td>${lote.nomeLote}</td>
+					<td>${lote.qtdMedicamento}</td>
+					<td>${lote.medicamento.nomeMedicamento}</td>
+
+					<td><a
+						href="${linkTo[LoteController].editar}?pkKey=${lote.pkLote}"><button
+								type="submit" id="icnEditar" class="btn btn-default">
+								<i class="glyphicon glyphicon-edit"></i>
+							</button></a></td>
+					<td><a
+						href="${linkTo[LoteController].deletar}?pkKey=${lote.pkLote}">
+							<button type="submit" id="icnCancelar" class="btn btn-danger">
+								<i class="glyphicon glyphicon-remove"></i>
+							</button>
+					</a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>
