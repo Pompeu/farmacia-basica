@@ -6,11 +6,11 @@ import br.com.caelum.vraptor.Path;
 @Controller
 public class FarmaciaController {
 	
-	@Path("/china")
+	@Path("/inicio")
 	public void inicio() {
 
 	}
-	@Path("/china/m")
+	@Path("/")
 	public void dashboard(){
 		
 	}

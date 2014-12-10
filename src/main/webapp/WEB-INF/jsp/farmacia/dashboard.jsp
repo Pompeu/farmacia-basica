@@ -8,7 +8,7 @@
 
     <title>BFar - Farmácia Básica - Dashboard</title>
 
-    <!-- Bootstrap core CSS -->
+-<!-- Bootstrap core CSS -->
     <link href="<c:url value='/assets/css/bootstrap.css' />" rel="stylesheet" type="text/css" />
     <!--external css-->
     <link href="<c:url value='/assets/font-awesome/css/font-awesome.css' />" rel="stylesheet" type="text/css" />
@@ -18,9 +18,12 @@
     
     <!-- Custom styles for this template -->
     <link href="<c:url value='/assets/css/style.css' />" rel="stylesheet" type="text/css" />
-    <link href="<c:url value='/assets/css/style-responsive.css' />" rel="stylesheet" type="text/css" />
+    <link href="<c:url value='/assets/css/style-responsive.css' />" rel="stylesheet" type="text/css" /> 
+    <script type="text/javascript" src=<c:url value="/assets/js/chart-master/Chart.js" /> ></script>
+  
+    <c:import url="../import/css.jsp"></c:import>
 	
-	<script type="text/javascript" src=<c:url value="/assets/js/chart-master/Chart.js" /> ></script>
+	
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -671,7 +674,7 @@
       </footer>
       <!--footer end-->
   </section>
-
+<c:import url="../import/javascripts.jsp"></c:import>
     <!-- js placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src=<c:url value="/assets/js/jquery.js" /> ></script>
     <script type="text/javascript" src=<c:url value="/assets/js/jquery-1.8.3.min.js" /> ></script>

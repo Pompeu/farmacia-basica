@@ -1,6 +1,5 @@
 package br.edu.ifgoiano.farmacia.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,7 +17,7 @@ public class DAO<T> {
 
 	private final Class<T> clazz;
 
-	private EntityManager em;
+	protected EntityManager em;
 
 	public DAO(Class<T> clazz) {
 		this.clazz = clazz;

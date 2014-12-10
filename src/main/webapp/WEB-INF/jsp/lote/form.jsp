@@ -15,13 +15,13 @@
 <c:import url="../import/header.jsp"></c:import>
 <c:import url="../import/leftMenu.jsp"></c:import>
 <div style="width: 900px; height:600px">	
-	<form class="form " action="create" role="form" method="post">
+	<form class="form" action="create" role="form" method="post">
 	<div style="float: left;width:320; margin: 50px">
 		<legend>Entrada de Medicamento</legend>
 		 <div class="form-group">
 		 	 	<label for="codigo">Nome Lote</label>
 		 	 	<input type="hidden" id="lote" value="${lote.pkLote}" name="lote.pkLote">
-				<input required="required" pattern="[0-9a-zA-Z]+$" class="form-control" type="text" id="lote" value="${lote.nomeLote}" name="lote.nomeLote">			
+				<input class="form-control" type="text" id="lote" value="${lote.nomeLote}" name="lote.nomeLote">			
 		</div>	
 		<div class="form-group">
 			<label for="codigo">Codigo Barras</label>
