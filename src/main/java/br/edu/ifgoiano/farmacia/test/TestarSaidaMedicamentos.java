@@ -28,6 +28,9 @@ public class TestarSaidaMedicamentos {
 
 		String value = "123545";
 		Lote lote = daoLote.retriveLoteValue(value);
+		/*
+		 * baixa de medicamentos ta um lixo no minimo um rafactor lindo
+		 */
 		lote.setQtdMedicamento(lote.getQtdMedicamento() - Math.abs(5));
 		assertEquals(lote.getNomeLote(), value);
 
