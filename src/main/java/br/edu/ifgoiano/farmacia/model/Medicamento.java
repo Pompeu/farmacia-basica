@@ -66,12 +66,24 @@ public class Medicamento implements Serializable {
 		return descricao;
 	}
 
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public String getNomeMedicamento() {
 		return nomeMedicamento;
 	}
 
+	public void setNomeMedicamento(String nomeMedicamento) {
+		this.nomeMedicamento = nomeMedicamento;
+	}
+
 	public List<Lote> getLotes() {
 		return lotes;
+	}
+
+	public void setLotes(List<Lote> lotes) {
+		this.lotes = lotes;
 	}
 
 	public Grupo getGrupo() {
