@@ -7,33 +7,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:import url="../import/css.jsp"></c:import>
-<title>Medicamento</title>
+
+<title>Cadastro Pacientes</title>
 </head>
 <body>
-<!-- String cpf, Date dataNascimento, String nome,
-			String nomeMae, Cidade cidade
-				<td>${paciente.nome}</td>
-					<td>${paciente.cpf}</td>
-					<td>${paciente.dataNascimento}</td>
-					<td>${paciente.nomeMae}</td> -->
+<c:import url="../import/header.jsp"></c:import>
  <fieldset>	
-	<form action="create">
-		<input type="hidden" value="${paciente.pkPaciente}" name="paciente.pkPaciente">
-		<label>Nome</label>
-		<input type="text" value="${paciente.nome}" name="paciente.nome">
-		<label>CPF</label>
-		<input type="text" value="${paciente.cpf}"  name="paciente.cpf">
-		<label>Data Nascimento</label>
-		<input type="date" <fmt:formatDate type="date" value="${paciente.dataNascimento.time}"/> name="paciente.dataNascimento.time">
-		<label>Nome Mãe</label>
-		<input type="text" value="${paciente.nomeMae}" name="paciente.nomeMae">
-		<label>Cidade</label>
-		<input type="text" value="${paciente.cidade.nome}" name="paciente.cidade.nome">
-		<label>UF</label>
-		<input type="text" value="${paciente.cidade.estado.uf}" name="paciente.cidade.estado.uf">
-		<input type="submit" value="adicionar">
+ <div style="width: 500px; height:400px; margin: 0px auto">
+	<form class="form" action="create"  method="post">
+		<div class="form-group">
+			<legend>Cadastro Pacientes</legend>
+			<input class="form-control" type="hidden" value="${paciente.pkPaciente}" name="paciente.pkPaciente">
+		</div>
+		<div class="form-group">				
+			<label>Nome</label>
+			<input class="form-control" type="text" value="${paciente.nome}" name="paciente.nome">
+		</div>
+		<div class="form-group">
+			<label>CPF</label>
+			<input class="form-control"  type="text" value="${paciente.cpf}"  name="paciente.cpf">
+		</div>
+		<div class="form-group">
+			<label>Data Nascimento</label>
+			<input class="form-control" type="text" <fmt:formatDate type="date" value="${paciente.dataNascimento.time}"/> name="paciente.dataNascimento.time">
+		</div>
+		<div class="form-group">
+			<label>Nome Mãe</label>
+			<input class="form-control" type="text" value="${paciente.nomeMae}" name="paciente.nomeMae">
+		</div>
+		<div class="form-group">
+			<label>Cidade</label>
+			<input class="form-control" type="text" value="${paciente.cidade.nome}" name="paciente.cidade.nome">
+			<label>UF</label>
+			<input class="form-control" type="text" value="${paciente.cidade.estado.uf}" name="paciente.cidade.estado.uf">
+		</div>
+		<div style="float: right;" class="form-group">
+			<input class="btn btn-primary"  type="submit" value="adicionar">
+		</div>
 	</form>
+</div>
 </fieldset>
 <c:import url="../import/javascripts.jsp"></c:import>
+
 </body>
 </html>

@@ -7,9 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:import url="../import/css.jsp"></c:import>
 
+
 <title>Medicos</title>
 </head>
 <body>
+<c:import url="../import/header.jsp"></c:import>
 	<table class="table table-hover">
 		<thead>
 			<td><strong>Descriação</strong></td>

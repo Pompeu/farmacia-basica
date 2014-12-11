@@ -11,6 +11,7 @@
 <title>Saida Medicamentos</title>
 </head>
 <body>
+<c:import url="../import/header.jsp"></c:import>
 <div style="width: 400px; height:300px; margin: 0px auto">
 	<form class="form" action="create"  method="post">
 		<legend>Saida de Medicamentos</legend>

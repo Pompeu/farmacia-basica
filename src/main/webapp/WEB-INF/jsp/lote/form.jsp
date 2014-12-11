@@ -13,7 +13,7 @@
 </head>
 <body>
 <c:import url="../import/header.jsp"></c:import>
-<div style="width: 900px; height:600px">	
+<div style="width: 1400px; height:400px">	
 	<form class="form" action="create" role="form" method="post">
 	<div style="float: left;width:320; margin: 50px">
 		<legend>Entrada de Medicamento</legend>
@@ -34,23 +34,25 @@
 			<label for="quant">Quanditade</label>	
 			<input class="form-control" type="number" id="quant value="${lote.qtdMedicamento}" name="lote.qtdMedicamento">
 		</div>
-		<div class="form-group">
-			<label for="un">Unidade Medida</label>	
-			<input class="form-control" type="text" id="un" value="${lote.unidade}" name="lote.unidade">
-		</div>
-		<div class="form-group">
-			<label for="entradada">Data Entrada</label>
-			
-			<input class="form-control" type="text" id="entradada" value="<fmt:formatDate value="${lote.dataEntrada}" pattern="dd/MM/yyyy"/> " name="lote.dataEntrada">
-		</div>
-		<div class="form-group">
-			<label for="fab">Data Frabricação</label>
-			<input class="form-control" type="text" id="fab" value="<fmt:formatDate  value="${lote.dataFabricacao}" pattern="dd/MM/yyyy" /> "name="lote.dataFabricacao">
-		</div>
-		<div class="form-group">
-			<label for="venc">Data Vencimento</label>
-			<input class="form-control" type="text" id="venc" value="<fmt:formatDate value="${lote.dataVencimento}" pattern="dd/MM/yyyy"/>" name="lote.dataVencimento">
-		</div>
+	</div>
+	<div style="float: left;width:320; margin: 50px">
+			<div class="form-group">
+				<label for="un">Unidade Medida</label>	
+				<input class="form-control" type="text" id="un" value="${lote.unidade}" name="lote.unidade">
+			</div>
+			<div class="form-group">
+				<label for="entradada">Data Entrada</label>
+				
+				<input class="form-control" type="text" id="entradada" value="<fmt:formatDate value="${lote.dataEntrada}" pattern="dd/MM/yyyy"/> " name="lote.dataEntrada">
+			</div>
+			<div class="form-group">
+				<label for="fab">Data Frabricação</label>
+				<input class="form-control" type="text" id="fab" value="<fmt:formatDate  value="${lote.dataFabricacao}" pattern="dd/MM/yyyy" /> "name="lote.dataFabricacao">
+			</div>
+			<div class="form-group">
+				<label for="venc">Data Vencimento</label>
+				<input class="form-control" type="text" id="venc" value="<fmt:formatDate value="${lote.dataVencimento}" pattern="dd/MM/yyyy"/>" name="lote.dataVencimento">
+			</div>
 	</div>
 	<div style="float: left;width:320; margin: 50px">
 			<legend>Cadastro Medicamento</legend>
@@ -83,6 +85,5 @@
 	</form>
 	</div>
 	<c:import url="../import/right.jsp"></c:import>
-	<c:import url="../import/footer.jsp"></c:import>
 </body>
 </html>

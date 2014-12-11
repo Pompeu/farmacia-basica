@@ -6,10 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:import url="../import/css.jsp"></c:import>
+<c:import url="../import/javascripts.jsp"></c:import>
 
 <title>Medicos</title>
 </head>
 <body>
+<c:import url="../import/header.jsp"></c:import>
 	<table class="table table-hover">
 		<thead>
 			<td><strong>Nome</strong></td>

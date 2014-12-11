@@ -6,20 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:import url="../import/css.jsp"></c:import>
+
 <title>Medico</title>
 </head>
 <body>
+<c:import url="../import/header.jsp"></c:import>
+ <div style="width: 500px; height:400px; margin: 0px auto">
  <fieldset>	
-	<form action="create">
+ 	<form class="form" action="create"  method="post">
+ 		<legend>Cadastro Medico</legend>
 		<input type="hidden" value="${medico.pkMedicos}" name="medico.pkMedicos"/>
-		<label>Nome</label>
-		<input type="text" value="${medico.nome}" name="medico.nome"/>
-		<label>CRM</label>
-		<input type="text" value="${medico.crm}" name="medico.crm"/>
-		<label>TELEFONE</label>
-		<input type="text" value="${medico.telefone}" name="medico.telefone"/>
-		<input type="submit" value="Gravar" name="btn">
+		<div class="form-group">
+			<label>Nome</label>
+			<input class="form-control" type="text" value="${medico.nome}" name="medico.nome"/>
+		</div>
+		<div class="form-group">
+			<label>CRM</label>
+			<input class="form-control"type="text" value="${medico.crm}" name="medico.crm"/>
+		</div>
+		<div class="form-group">
+			<label>TELEFONE</label>
+			<input class="form-control"type="text" value="${medico.telefone}" name="medico.telefone"/>
+		</div>
+		<div style="float: right;" class="form-group">
+			<input class="btn btn-primary" type="submit" value="Gravar" name="btn">
+		</div>
 	</form>
+</div>
 </fieldset>
 <c:import url="../import/javascripts.jsp"></c:import>
 </body>

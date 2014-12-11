@@ -6,19 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:import url="../import/css.jsp"></c:import>
-<title>Medicamento</title>
+
+<title>Cadastro Medicamento</title>
 </head>
 <body>
- <fieldset>	
-	<form action="create">
+<c:import url="../import/header.jsp"></c:import>
+
+<div style="width: 500px; height:400px; margin: 0px auto">
+ 	<fieldset>	
+	<form class="form" action="create"  method="post">
+ 		<legend>Cadastro Medicamento</legend>
 		<input type="hidden" value="${medicamento.pkMedicamento}" name="medicamento.pkMedicamento"/>
-		<label>Descricao</label>
-		<input type="text" value="${medicamento.descricao}" name="medicamento.descricao"/>
-		<label>Nome Medicamento</label>
-		<input type="text" value="${medicamento.nomeMedicamento}" name="medicamento.nomeMedicamento"/>
-		<input type="submit" value="Gravar" name="btn">
+		<div class="form-group">
+			<label>Descricao</label>
+			<input class="form-control" type="text" value="${medicamento.descricao}" name="medicamento.descricao"/>
+		</div>	
+		<div class="form-group">
+			<label>Nome Medicamento</label>
+			<input class="form-control" type="text" value="${medicamento.nomeMedicamento}" name="medicamento.nomeMedicamento"/>
+		</div>
+		<div style="float: right;" class="form-group">
+			<input class="btn btn-primary" type="submit" value="Gravar" name="btn">
+		</div>
 	</form>
-</fieldset>
+	</fieldset>
+</div>
 <c:import url="../import/javascripts.jsp"></c:import>
 </body>
 </html>

@@ -14,4 +14,8 @@ public class FarmaciaController {
 	public void dashboard(){
 		
 	}
+	@Path("/contatos")
+	public void contatos(){
+	}
+	
 }

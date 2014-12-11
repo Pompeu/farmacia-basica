@@ -11,6 +11,7 @@
 <title>Lista de Lotes</title>
 </head>
 <body>
+<c:import url="../import/header.jsp"></c:import>
 	<table class="table table-hover">
 		<thead>
 			<td><strong>Codigo do Lote</strong></td>
