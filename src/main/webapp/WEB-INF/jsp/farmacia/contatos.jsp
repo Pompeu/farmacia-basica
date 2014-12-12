@@ -27,4 +27,5 @@
 	</div>
 </div>
 </body>
+<c:import url="../import/footer.jsp"></c:import>
 </html>

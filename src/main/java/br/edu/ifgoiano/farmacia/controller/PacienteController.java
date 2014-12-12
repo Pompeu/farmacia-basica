@@ -7,8 +7,6 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.edu.ifgoiano.farmacia.dao.DAO;
-import br.edu.ifgoiano.farmacia.model.Cidade;
-import br.edu.ifgoiano.farmacia.model.Estado;
 import br.edu.ifgoiano.farmacia.model.Paciente;
 
 @Controller

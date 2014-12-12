@@ -8,9 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.edu.ifgoiano.farmacia.model.EntradasMedicamento;
-import br.edu.ifgoiano.farmacia.model.Grupo;
 import br.edu.ifgoiano.farmacia.model.Lote;
 import br.edu.ifgoiano.farmacia.model.Medicamento;
+
 @RequestScoped
 public class LoteImpl implements LoteDAO {
 	private final EntityManager manager;
@@ -86,11 +86,6 @@ public class LoteImpl implements LoteDAO {
 	@Override
 	public Medicamento recuperarMedicamentoById(Integer id) {
 		return manager.find(Medicamento.class, id);
-	}
-
-	@Override
-	public Grupo recuperarGrupoById(Integer id) {
-		return manager.find(Grupo.class, id);
 	}
 
 	@Override

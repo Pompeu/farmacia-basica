@@ -35,7 +35,7 @@ public class Lote implements Serializable {
 	@Column(name = "pk_lote")
 	private Integer pkLote;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataEntrada;
 
 	@Temporal(TemporalType.TIMESTAMP)

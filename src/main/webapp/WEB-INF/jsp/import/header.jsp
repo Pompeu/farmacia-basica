@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="page-header" style="background-color: #fff; color: #000;">
-	<h1 style="background-color: #fff; color: #000;">
+<div class="page-header" >
+	<h1>
 		Farmacia Basica <small>esse e um sistema para controle de
 			medicamentos</small>
 		<ul class="nav pull-right top-menu">

@@ -16,7 +16,7 @@ body {
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
-    font-size:13px;
+    font-size:25px;
 }
 
 ul li {
@@ -1424,6 +1424,11 @@ PANELS CONFIGURATIONS
 .steps input[type=checkbox] {
   display: none;
 }
+input[type="text"],input[type="number"]{
+  background-color : #d1d1d1;
+  color: black; 
+}
+
 .steps input[type=submit]{
   background: #f1783c;
   border: none;

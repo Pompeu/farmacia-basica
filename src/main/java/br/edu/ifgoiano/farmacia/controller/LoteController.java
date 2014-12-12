@@ -44,7 +44,6 @@ public class LoteController {
 		lote.setEntradasMedicamento(new EntradasMedicamento(lote.getNumeroNf()));
 		System.out.println(lote.toString());
 		System.out.println(lote.getMedicamento().toString());
-		System.out.println(lote.getMedicamento().getGrupo().toString());
 		System.out.println(lote.getEntradasMedicamento().toString());
 		if (lote.getPkLote() == null)
 			dao.create(lote);

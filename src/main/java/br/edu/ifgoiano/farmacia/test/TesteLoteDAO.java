@@ -1,11 +1,5 @@
 package br.edu.ifgoiano.farmacia.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.time.Instant;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.After;
@@ -14,14 +8,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.edu.ifgoiano.farmacia.dao.DAO;
 import br.edu.ifgoiano.farmacia.dao.LoteDAO;
 import br.edu.ifgoiano.farmacia.dao.LoteImpl;
-import br.edu.ifgoiano.farmacia.model.EntradasMedicamento;
-import br.edu.ifgoiano.farmacia.model.Grupo;
 import br.edu.ifgoiano.farmacia.model.Lote;
-import br.edu.ifgoiano.farmacia.model.Medicamento;
-import br.edu.ifgoiano.farmacia.model.Unidade;
 import br.edu.ifgoiano.farmacia.util.JPAUtil;
 
 public class TesteLoteDAO {
@@ -38,7 +27,8 @@ public class TesteLoteDAO {
 
 	@Before
 	public void setUp() throws Exception {
-		this.loteDAO = new LoteImpl(new JPAUtil().criaEntityManager());
+		new JPAUtil();
+		this.loteDAO = new LoteImpl(JPAUtil.criaEntityManager());
 	}
 
 	@After

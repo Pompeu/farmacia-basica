@@ -32,5 +32,6 @@
 	</fieldset>
 </div>
 <c:import url="../import/javascripts.jsp"></c:import>
+<c:import url="../import/footer.jsp"></c:import>
 </body>
 </html>

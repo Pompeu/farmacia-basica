@@ -17,27 +17,28 @@
 		<legend>Saida de Medicamentos</legend>
 		 <div class="form-group">
 		 	 	<label for="medicamento">Nome do Medicamento</label>
-				<input id="medicamento" class="form-control" value="" name="" required="required" pattern="[0-9a-zA-Z]+$" >			
+				<input id="medicamento" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$" >			
 		</div>
 		<div class="form-group">
 		 	 	<label for="lote">Nome do Lote</label>
-				<input id="lote" class="form-control" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
+				<input id="lote" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
 		</div>
 		<div class="form-group">
 		 	 	<label for="medico">CRM Medico</label>
-				<input id="medico" class="form-control" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
+				<input id="medico" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
 		</div>
 		<div class="form-group">
 		 	 	<label for="paciente">CPF Paciente</label>
-				<input id="paciente" class="form-control" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
+				<input id="paciente" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
 		</div>
 		<div class="form-group">
 		 	 	<label for="quant">Quantidade</label>
-				<input id="quant" class="form-control" value="" name="" required="required" pattern="[0-9]{2}+$">			
+				<input id="quant" class="form-control" type="number" value="" name="" required="required"   pattern="[0-9]{2}+$">			
 		</div>
 		<a class="btn btn-primary" href="<c:url value="/"/>">Voltar Ao Inicio</a>
 		<input class="btn btn-primary" type="submit"  value="gravar">			
 	</form>
 </div>
 </body>
+<c:import url="../import/footer.jsp"></c:import>
 </html>

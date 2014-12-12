@@ -40,17 +40,12 @@ public class Medicamento implements Serializable {
 	@OneToMany(mappedBy = "medicamento", cascade = CascadeType.ALL)
 	private List<Lote> lotes;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "pk_grupo", referencedColumnName = "pk_grupo")
-	private Grupo grupo;
-
 	Medicamento() {
 	}
 
-	public Medicamento(String descricao, String nomeMedicamento, Grupo grupo) {
+	public Medicamento(String descricao, String nomeMedicamento) {
 		this.descricao = descricao;
 		this.nomeMedicamento = nomeMedicamento;
-		this.grupo = grupo;
 
 	}
 
@@ -86,19 +81,10 @@ public class Medicamento implements Serializable {
 		this.lotes = lotes;
 	}
 
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
-
 	@Override
 	public String toString() {
 		return "Medicamento [pkMedicamento=" + pkMedicamento + ", descricao="
-				+ descricao + ", nomeMedicamento=" + nomeMedicamento
-				+ ", grupo=" + grupo + "]";
+				+ descricao + ", nomeMedicamento=" + nomeMedicamento + "]";
 	}
 
 	@Override
