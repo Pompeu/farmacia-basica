@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.edu.ifgoiano.farmacia.controller.logic.MedicamentosLogic;
 import br.edu.ifgoiano.farmacia.dao.DAO;
 import br.edu.ifgoiano.farmacia.dao.SaidaDAO;
 import br.edu.ifgoiano.farmacia.model.Lote;
@@ -24,7 +25,6 @@ public class SaidasMedicamentoController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Result result;
 	private DAO<SaidasMedicamento> dao;
-	private DAO<Lote> daoLote;
 	private SaidasMedicamento saidasMedicamento;
 	private SaidaDAO finder;
 	private Paciente paciente;
@@ -57,6 +57,8 @@ public class SaidasMedicamentoController implements Serializable {
 		saidasMedicamento.setPaciente(paciente);
 		saidasMedicamento.setMedico(medico);
 		dao.create(saidasMedicamento);
+		MedicamentosLogic.atulizarEstoqueMedicamentos(lote.getPkLote(),
+				Math.abs(quantidade));
 		result.redirectTo(this).listar();
 	}
 

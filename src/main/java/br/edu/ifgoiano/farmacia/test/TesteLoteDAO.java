@@ -1,5 +1,7 @@
 package br.edu.ifgoiano.farmacia.test;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
 import org.junit.After;
@@ -77,21 +79,21 @@ public class TesteLoteDAO {
 //				entradasMedicamento.getPkEntrada());
 //	}
 //
-//	@Test
-//	public void deveDiminuirQuantidadeUmLote() {
-//		Lote recuperarById = loteDAO.recuperarById(10);
-//
-//		Integer qtdMedicamento = recuperarById.getQtdMedicamento();
-//		int medicamentosEntregues = 5;
-//
-//		recuperarById.setQtdMedicamento(qtdMedicamento
-//				- Math.abs(medicamentosEntregues));
-//		loteDAO.salvar(recuperarById);
-//
-//		assertTrue(qtdMedicamento == recuperarById.getQtdMedicamento()
-//				+ Math.abs(medicamentosEntregues));
-//
-//	}
+	@Test
+	public void deveDiminuirQuantidadeUmLote() {
+		Lote recuperarById = loteDAO.recuperarById(10);
+
+		Integer qtdMedicamento = recuperarById.getQtdMedicamento();
+		int medicamentosEntregues = 5;
+
+		recuperarById.setQtdMedicamento(qtdMedicamento
+				- Math.abs(medicamentosEntregues));
+		loteDAO.salvar(recuperarById);
+
+		assertTrue(qtdMedicamento == recuperarById.getQtdMedicamento()
+				+ Math.abs(medicamentosEntregues));
+
+	}
 
 	@Test
 	public void deveMostrarNomeDomedicamento() {
