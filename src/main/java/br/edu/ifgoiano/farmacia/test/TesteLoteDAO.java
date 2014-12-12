@@ -27,7 +27,7 @@ public class TesteLoteDAO {
 
 	@Before
 	public void setUp() throws Exception {
-		new JPAUtil();
+		
 		this.loteDAO = new LoteImpl(JPAUtil.criaEntityManager());
 	}
 

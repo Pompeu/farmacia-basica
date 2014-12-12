@@ -14,23 +14,8 @@
 <c:import url="../import/header.jsp"></c:import>
 <div style="width: 400px; height:300px; margin: 0px auto">
 	<form class="form" action="create"  method="post">
-		<legend>Saida de Medicamentos</legend>
-		 <div class="form-group">
-		 	 	<label for="medicamento">Nome do Medicamento</label>
-				<input id="medicamento" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$" >			
-		</div>
-		<div class="form-group">
-		 	 	<label for="lote">Nome do Lote</label>
-				<input id="lote" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
-		</div>
-		<div class="form-group">
-		 	 	<label for="medico">CRM Medico</label>
-				<input id="medico" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
-		</div>
-		<div class="form-group">
-		 	 	<label for="paciente">CPF Paciente</label>
-				<input id="paciente" class="form-control" type="text" value="" name="" required="required" pattern="[0-9a-zA-Z]+$">			
-		</div>
+		<legend>Saida de Medicamentos</legend>	
+		<input id="medicamento" class="form-control" type="hidden" value="" name="" >			
 		<div class="form-group">
 		 	 	<label for="quant">Quantidade</label>
 				<input id="quant" class="form-control" type="number" value="" name="" required="required"   pattern="[0-9]{2}+$">			
