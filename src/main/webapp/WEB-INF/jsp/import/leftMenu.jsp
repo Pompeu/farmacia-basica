@@ -31,7 +31,7 @@
   	<li class="divider"></li>
   	<li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/paciente/listar'/>">Consultar Paciente</a></li>
   	<li class="divider"></li>
-  	<li role="presentation"><a role="menuitem" tabindex="-1" onclick='alert("Não implentado");' href="#">Relatorios</a></li>
+  	<li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/controller/relatorios'/>">Relatorios</a></li>
   </ul>
 </div>
 <div class="btn-group">
@@ -45,6 +45,6 @@
     <li class="divider divider-background"></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/contatos'/>">Contato</a></li>
     <li class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/login/logout'/>">sair</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/login/logout'/>">Sair</a></li>
   </ul>
 </div>
