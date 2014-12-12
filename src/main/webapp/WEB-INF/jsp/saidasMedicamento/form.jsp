@@ -13,16 +13,7 @@
 <body>
 <c:import url="../import/header.jsp"></c:import>
 <div style="width: 400px; height:300px; margin: 0px auto">
-	<form class="form" action="create"  method="post">
-		<legend>Saida de Medicamentos</legend>	
-		<input id="medicamento" class="form-control" type="hidden" value="" name="" >			
-		<div class="form-group">
-		 	 	<label for="quant">Quantidade</label>
-				<input id="quant" class="form-control" type="number" value="" name="" required="required"   pattern="[0-9]{2}+$">			
-		</div>
-		<a class="btn btn-primary" href="<c:url value="/"/>">Voltar Ao Inicio</a>
-		<input class="btn btn-primary" type="submit"  value="gravar">			
-	</form>
+	<c:import url="../saidasMedicamento/inputLote.jsp"></c:import>			
 </div>
 </body>
 <c:import url="../import/footer.jsp"></c:import>

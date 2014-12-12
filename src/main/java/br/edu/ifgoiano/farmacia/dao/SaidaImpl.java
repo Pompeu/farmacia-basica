@@ -1,5 +1,8 @@
 package br.edu.ifgoiano.farmacia.dao;
 
+import java.io.Serializable;
+
+import javax.enterprise.context.RequestScoped;
 import javax.persistence.TypedQuery;
 
 import br.edu.ifgoiano.farmacia.model.Lote;
@@ -7,7 +10,11 @@ import br.edu.ifgoiano.farmacia.model.Medico;
 import br.edu.ifgoiano.farmacia.model.Paciente;
 import br.edu.ifgoiano.farmacia.model.SaidasMedicamento;
 
-public class SaidaImpl extends DAO<SaidasMedicamento> implements SaidaDAO {
+
+@RequestScoped
+public class SaidaImpl extends DAO<SaidasMedicamento> implements SaidaDAO,Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	public SaidaImpl() {
 		super(SaidasMedicamento.class);

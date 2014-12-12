@@ -1,5 +1,6 @@
 package br.edu.ifgoiano.farmacia.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -12,7 +13,9 @@ import br.edu.ifgoiano.farmacia.model.Lote;
 import br.edu.ifgoiano.farmacia.model.Medicamento;
 
 @RequestScoped
-public class LoteImpl implements LoteDAO {
+public class LoteImpl implements LoteDAO, Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private final EntityManager manager;
 
 	@Deprecated

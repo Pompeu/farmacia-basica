@@ -14,32 +14,22 @@
 	<c:import url="../import/header.jsp"></c:import>
 	<table class="table table-hover">
 		<thead>
-			<td><strong>Nome</strong></td>
-			<td><strong>CRM</strong></td>
-			<td><strong>Telefone</strong></td>
-
-			<td><strong>Editar</strong></td>
-			<td><strong>Excluir</strong></td>
+			<td><strong>Data da Saida</strong></td>
+			<td><strong>Quantidade</strong></td>
+			<td><strong>Codigo Lote</strong></td>
+			<td><strong>Nome Medico</strong></td>
+			<td><strong>Nome Pacinte</strong></td>
+			
 		</thead>
 		<!--Sql para buscar consultas na fila de antendimento no banco de dados-->
 		<tbody>
-			<c:forEach items="${medicoList}" var="medico">
+			<c:forEach items="${saidasMedicamentoList}" var="saidasMedicamento">
 				<tr>
-					<td>${medico.nome}</td>
-					<td>${medico.crm}</td>
-					<td>${medico.telefone}</td>
-
-					<td><a
-						href="${linkTo[MedicoController].editar}?pkKey=${medico.pkMedicos}"><button
-								type="submit" id="icnEditar" class="btn btn-default">
-								<i class="glyphicon glyphicon-edit"></i>
-							</button></a></td>
-					<td><a
-						href="${linkTo[MedicoController].deletar}?pkKey=${medico.pkMedicos}">
-							<button type="submit" id="icnCancelar" class="btn btn-danger">
-								<i class="glyphicon glyphicon-remove"></i>
-							</button>
-					</a></td>
+					<td><fmt:formatDate  value="${saidasMedicamento.dataSaida.time}" pattern="dd/MM/yyyy" /></td>
+					<td>${saidasMedicamento.quantidade}</td>
+					<td>${saidasMedicamento.lote.nomeLote}</td>
+					<td>${saidasMedicamento.medico.nome}</td>
+					<td>${saidasMedicamento.paciente.nome}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

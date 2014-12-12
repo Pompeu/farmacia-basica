@@ -9,7 +9,7 @@
 <c:import url="../import/css.jsp"></c:import>
 
 
-<title>Medicos</title>
+<title>Pacientes</title>
 </head>
 <body>
 <c:import url="../import/header.jsp"></c:import>
